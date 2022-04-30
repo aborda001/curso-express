@@ -7,9 +7,34 @@ app.get('/', (req, res) => {
 });
 
 app.get('/products', (req, res) => {
+  res.json([
+    {
+      name: 'Product 1',
+      price: '$1.99'
+    },
+    {
+      name: 'Product 2',
+      price: '$2.99'
+    }
+  ]);
+});
+
+app.get('/products/:id', (req, res) => {
+  const { id } = req.params;
   res.json({
+    id ,
     name: 'Product 1',
-    price: '$10'
+    price: '$1.99'
+  });
+});
+
+app.get('/categories/:categoryId/products/:productId', (req, res) => {
+  const { categoryId, productId } = req.params;
+  res.json({
+    categoryId,
+    productId,
+    name: 'Product 1',
+    price: '$1.99'
   });
 });
 
